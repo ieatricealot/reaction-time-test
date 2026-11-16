@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            button {
+                color: chocolate; 
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: medium; 
+                text-align: center;
+                height: fit-content;
+                padding: 10px 20px;
+                position: relative;
+                top: 150px;
+                left: 700px;
+            }
+        </style>
+        
+    </head>
+    <body style="background-image: url('https://media.istockphoto.com/id/927439834/vector/abstract-low-poly-triangular-modern-geometric-background.jpg?s=170667a&w=0&k=20&c=9zXtiOYIJd-iqaN39y9jMcpT07ySAd1vgZmmirFR2d4=');">
+        <p id="time" style="position: relative;top: 130px;left: 720px;;"> </p>
+        <button id="start"> Wait for green </button>
+
+        <script>
+            let button = document.getElementById("start");
+            let current_time = null;
+            let ck = 0
+
+            document.addEventListener("DOMContentLoaded", () => {
+                let delay = Math.floor(Math.random() * 7000) + 3000;
+                
+                setTimeout(() => {
+                    button.style.backgroundColor = 'green';
+                    button.style.color = 'white';
+                    button.innerText = 'CLICK NOW!';
+                    
+                    current_time = Date.now();
+                }, delay);
+            });
+
+            button.addEventListener("click", () => {
+                ck ++
+                if (ck == 1 ){
+                if (current_time !== null){
+                    document.getElementById("time").innerText = (Date.now() - current_time) + " ms";
+                }
+            else if (ck == 0) {
+                document.getElementById("time").innerText = "";
+            }
+        }
+            else if (ck > 1) {
+                document.getElementById("time").innerText = "Clicked too early";
+            }
+            });
+            
+        </script>
+    </body>
+</html>
